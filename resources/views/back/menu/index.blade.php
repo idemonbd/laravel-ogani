@@ -21,7 +21,7 @@
                             <th>Id</th>
                             <th>Name</th>
                             <th>Position</th>
-                            <th>Items</th>
+                            <th>Pages</th>
                             <th>Action</th>
                         </tr>
                     </thead>

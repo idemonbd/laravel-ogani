@@ -27,6 +27,12 @@
                 </a>
             </li>
             
+            <li class="nav-item {{ request()->is('*products*') ? 'open':'' }}">
+                <a class="d-flex align-items-center" href="{{ route('account.products.index') }}">
+                    <i data-feather="shopping-bag"></i>
+                    <span class="menu-title text-truncate">Products</span>
+                </a>
+            </li>
             <li class="nav-item {{ request()->is('*categories*') ? 'open':'' }}">
                 <a class="d-flex align-items-center" href="{{ route('account.categories.index') }}">
                     <i data-feather="grid"></i>
@@ -34,10 +40,10 @@
                 </a>
             </li>
             
-           <li class="nav-item {{ request()->is('*products*') ? 'open':'' }}">
-                <a class="d-flex align-items-center" href="{{ route('account.products.index') }}">
-                    <i data-feather="shopping-bag"></i>
-                    <span class="menu-title text-truncate">Products</span>
+            <li class="nav-item {{ request()->is('*pages*') ? 'open':'' }}">
+                <a class="d-flex align-items-center" href="{{ route('account.pages.index') }}">
+                    <i data-feather="grid"></i>
+                    <span class="menu-title text-truncate">Pages</span>
                 </a>
             </li>
             <li class="nav-item {{ request()->is('*menus*') ? 'open':'' }}">
