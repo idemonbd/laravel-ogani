@@ -32,6 +32,13 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
+                            <label>Type</label>
+                            <select name="type" class="form-control">
+                                <option value="page">Page</option>
+                                <option value="link">Custom</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>Add to Menu</label>
                             <select name="menu_id" class="form-control">
                                 <option value="">None</option>

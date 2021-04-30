@@ -29,7 +29,7 @@
                         @foreach ($pages as $page)
                         <tr class="text-center">
                             <td>{{ $page->type }}</td>
-                            <td>{{ $page->name }}</td>
+                            <td><a href="{{ url('pages/'.$page->slug) }}">{{ $page->name }}</a></td>
                             <td>{{ $page->menu->name ?? 'None' }}</td>
                             <td>{{ $page->active ? 'Active':'Inactive' }}</td>
                             <td>
