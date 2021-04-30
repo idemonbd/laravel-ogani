@@ -7,10 +7,10 @@
 @section('content')
 <div class="card">
             <div class="card-header border-bottom p-1 mb-1">
-                <h4>All Categories</h4>
+                <h4>All Menus</h4>
                 <div class="text-right">
                     <a href="" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
-                        <span>Add Category</span>
+                        <span>Add menu</span>
                     </a>
                 </div>
             </div>
@@ -19,22 +19,22 @@
                     <thead>
                         <tr class="text-center">
                             <th>Id</th>
-                            <th>Image</th>
                             <th>Name</th>
+                            <th>Position</th>
+                            <th>Items</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $category)
+                        @foreach ($menus as $menu)
                         <tr class="text-center">
-                            <td>{{ $category->id }}</td>
-                            <td>
-                                <img src="{{ url( 'uploads/'.$category->image ) }}" class="img" style="max-height: 100px">    
-                            </td>
-                            <td>{{ $category->name }}</td>
+                            <td>{{ $menu->id }}</td>
+                            <td>{{ $menu->name }}</td>
+                            <td>{{ $menu->position }}</td>
+                            <td>{{ $menu->pages }}</td>
                             
                             <td>
-                                <button onclick="deleteItem({{ $category->id }})" class="btn btn-sm btn-danger">Delete</button>
+                                <button onclick="deleteItem({{ $menu->id }})" class="btn btn-sm btn-danger">Delete</button>
                             </td>
                         </tr>
                         @endforeach
@@ -49,12 +49,12 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="createModal">Add New Category</h4>
+                <h4 class="modal-title" id="createModal">Add New Menu</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form action="{{ route('account.categories.index') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('account.menus.index') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -62,13 +62,17 @@
                         <input type="text" name="name" placeholder="Name" class="form-control" value="{{ old('name') }}">
                     </div>
                     <div class="form-group">
-                        <label>Image</label>
-                        <input type="file" name="image" class="form-control-file">
+                        <label for="">Position</label>
+                        <select name="position" class="form-control">
+                            <option value="header">Header Menu</option>
+                            <option value="footer">Footer Menu</option>
+                        </select>
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary waves-effect waves-float waves-light">Add
-                        Category</button>
+                        menu</button>
                 </div>
             </form>
         </div>
@@ -87,11 +91,10 @@
 
 <script>
     function deleteItem(id) {
-        let url = '{{ url('account/categories') }}/' + id;
+        let url = '{{ url('account/menus') }}/' + id;
         if (confirm('Are you sure want to delete?')) {
             $('#deleteItem').attr('action', url).submit();
         }
     }
-
 </script>
 @endpush

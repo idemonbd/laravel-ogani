@@ -33,18 +33,19 @@
                     <span class="menu-title text-truncate">Categories</span>
                 </a>
             </li>
+            
            <li class="nav-item {{ request()->is('*products*') ? 'open':'' }}">
                 <a class="d-flex align-items-center" href="{{ route('account.products.index') }}">
                     <i data-feather="shopping-bag"></i>
                     <span class="menu-title text-truncate">Products</span>
                 </a>
             </li>
-
-
-
-
-
-
+            <li class="nav-item {{ request()->is('*menus*') ? 'open':'' }}">
+                <a class="d-flex align-items-center" href="{{ route('account.menus.index') }}">
+                    <i data-feather="grid"></i>
+                    <span class="menu-title text-truncate">Menu</span>
+                </a>
+            </li>
             <li class="nav-item {{ request()->is('*settings*') ? 'open':'' }}">
                 <a class="d-flex align-items-center" href="{{ route('account.settings.index') }}">
                     <i data-feather="settings"></i>

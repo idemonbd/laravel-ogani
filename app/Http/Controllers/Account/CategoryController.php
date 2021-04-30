@@ -25,8 +25,16 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'image' => 'required',
         ]);
-        Category::create($request->all());
+        
+        $category = new Category($request->except(['image']));
+        if ($request->hasFile('image')) {
+            $category->image = $request->image->store('category');
+        }
+        
+        $category->save();
+
         Toastr::success('Category added successfully', 'Success');
         return back();
     }

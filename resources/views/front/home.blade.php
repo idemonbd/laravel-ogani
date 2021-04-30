@@ -21,8 +21,8 @@
                     @foreach ($categories as $category)
                         <div class="col-lg-3">
                             <div class="categories__item set-bg"
-                                data-setbg="{{ asset('assets/front/img/categories/cat-1.jpg') }}">
-                                <h5><a href="#">{{ $category->name }}</a></h5>
+                                data-setbg="{{ url('uploads/'.$category->image) }}">
+                                <h5><a href="{{ route('front.shop', ['cat' => $category->id]) }}">{{ $category->name }}</a></h5>
                             </div>
                         </div>
                     @endforeach
@@ -55,7 +55,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6 mix cat-{{ $product->category->id }}">
                         <div class="featured__item">
                             <div class="featured__item__pic set-bg"
-                                data-setbg="{{ asset('assets/front') }}/img/featured/feature-1.jpg">
+                                data-setbg="{{ url('uploads/'.$product->image) }}">
                                 <ul class="featured__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
