@@ -176,7 +176,7 @@
                             <span>All Categories</span>
                         </div>
                         <ul>
-                            @foreach ($categories as $category)
+                            @foreach (App\Models\Category::all() as $category)
                                 <li><a href="#">{{ $category->name }}</a></li>
                             @endforeach
                         </ul>
