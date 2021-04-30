@@ -20,7 +20,7 @@
                         <tr class="text-center">
                             <th>Type</th>
                             <th>Name</th>
-                            <th>Position</th>
+                            <th>Menu</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -30,7 +30,8 @@
                         <tr class="text-center">
                             <td>{{ $page->type }}</td>
                             <td>{{ $page->name }}</td>
-                            <td>{{ $page->url }}</td>
+                            <td>{{ $page->menu->name ?? 'None' }}</td>
+                            <td>{{ $page->active ? 'Active':'Inactive' }}</td>
                             <td>
                                 <button onclick="deleteItem({{ $page->id }})" class="btn btn-sm btn-danger">Delete</button>
                             </td>

@@ -11,7 +11,12 @@ class Menu extends Model
 
     protected $guarded = [];
 
-    // protected $casts = [
-    //     'status' => 'boolean',
-    // ];
+    protected $casts = [
+        'active' => 'boolean',
+    ];
+
+    public function pages()
+    {
+        return $this->hasMany(Page::class);
+    }
 }
