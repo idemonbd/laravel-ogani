@@ -1,5 +1,5 @@
 ## About Project
-Multi vendor e-commerce PHP Laravel project.
+PHP Laravel Organic Shop
 
 ## License
 
