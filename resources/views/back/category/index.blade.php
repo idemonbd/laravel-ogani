@@ -18,23 +18,40 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr class="text-center">
-                            <th>Id</th>
+                            <th>#</th>
                             <th>Image</th>
                             <th>Name</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $category)
+                        @foreach ($categories as $index => $category)
                         <tr class="text-center">
-                            <td>{{ $category->id }}</td>
+                            <td>{{ $index+1 }}</td>
                             <td>
                                 <img src="{{ url( 'uploads/'.$category->image ) }}" class="img" style="max-height: 100px">    
                             </td>
                             <td>{{ $category->name }}</td>
                             
                             <td>
-                                <button onclick="deleteItem({{ $category->id }})" class="btn btn-sm btn-danger">Delete</button>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-sm dropdown-toggle hide-arrow"
+                                        data-toggle="dropdown">
+                                        <i data-feather="more-vertical"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item"
+                                            href="{{ route('account.categories.edit', $category->id) }}">
+                                            <i data-feather="edit-2" class="mr-50"></i>
+                                            <span>Edit</span>
+                                        </a>
+                                        <a class="dropdown-item" href="javascript:void(0);"
+                                            onclick="deleteItem({{ $category->id }})">
+                                            <i data-feather="trash" class="mr-50"></i>
+                                            <span>Delete</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         @endforeach

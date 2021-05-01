@@ -1,7 +1,7 @@
 @extends('layouts.back')
 
 @push('styles')
-
+<link rel="stylesheet" href="{{ asset('assets/back/vendors/css/forms/select/select2.min.css') }}">
 @endpush
 
 @section('content')
@@ -53,8 +53,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Categories</label>
-                                <select name="category_id" class="form-control">
-                                    <option value="">Select</option>
+                                <select name="categories[]" class="select2 form-control" multiple>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -105,3 +104,10 @@
         </div>
     </form>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('assets/back/vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script>
+        $('.select2').select2();
+    </script>
+@endpush

@@ -26,17 +26,18 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'category_id' => 'required|integer',
+            'categories' => 'required',
             'name' => 'required|string',
             'price' => 'integer',
             'image' => 'image',
         ]);
 
-        $product = new Product($request->except(['image','status']));
+        $product = new Product($request->only(['name','description','price']));
         if ($request->hasFile('image')) {
             $product->image = $request->image->store('product');
         }
         $product->save();
+        $product->categories()->attach($request->categories);
 
         Toastr::success('Product added successfully', 'Success');
         return redirect(route('account.products.index'));
