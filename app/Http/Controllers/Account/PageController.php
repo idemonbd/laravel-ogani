@@ -93,6 +93,8 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        //
+        $page->delete();
+        Toastr::success('Page deleted successfully', 'Success');
+        return back();
     }
 }

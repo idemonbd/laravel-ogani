@@ -17,7 +17,7 @@ class CreateMenusTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('position');
-            $table->boolean('active')->default(false);
+            $table->boolean('active')->default(0);
             $table->timestamps();
         });
     }

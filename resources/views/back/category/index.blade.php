@@ -7,10 +7,10 @@
 @section('content')
 <div class="card">
             <div class="card-header border-bottom p-1 mb-1">
-                <h4>All Categories</h4>
+                <h4>Categories</h4>
                 <div class="text-right">
                     <a href="" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
-                        <span>Add Category</span>
+                        <span>New</span>
                     </a>
                 </div>
             </div>
@@ -21,6 +21,7 @@
                             <th>#</th>
                             <th>Image</th>
                             <th>Name</th>
+                            <th>Products</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -32,6 +33,7 @@
                                 <img src="{{ url( 'uploads/'.$category->image ) }}" class="img" style="max-height: 100px">    
                             </td>
                             <td>{{ $category->name }}</td>
+                            <td>{{ $category->products->count() }} Products</td>
                             
                             <td>
                                 <div class="dropdown">

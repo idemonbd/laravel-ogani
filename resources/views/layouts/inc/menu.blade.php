@@ -42,14 +42,14 @@
             
             <li class="nav-item {{ request()->is('*pages*') ? 'open':'' }}">
                 <a class="d-flex align-items-center" href="{{ route('account.pages.index') }}">
-                    <i data-feather="grid"></i>
+                    <i data-feather='book-open'></i>
                     <span class="menu-title text-truncate">Pages</span>
                 </a>
             </li>
             <li class="nav-item {{ request()->is('*menus*') ? 'open':'' }}">
                 <a class="d-flex align-items-center" href="{{ route('account.menus.index') }}">
-                    <i data-feather="grid"></i>
-                    <span class="menu-title text-truncate">Menu</span>
+                    <i data-feather="menu"></i>
+                    <span class="menu-title text-truncate">Menus</span>
                 </a>
             </li>
             <li class="nav-item {{ request()->is('*settings*') ? 'open':'' }}">

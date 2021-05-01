@@ -7,10 +7,10 @@
 @section('content')
 <div class="card">
             <div class="card-header border-bottom p-1 mb-1">
-                <h4>All pages</h4>
+                <h4>Pages</h4>
                 <div class="text-right">
                     <a href="{{ route('account.pages.create') }}" class="btn btn-primary">
-                        <span>Add New Page</span>
+                        <span>New</span>
                     </a>
                 </div>
             </div>

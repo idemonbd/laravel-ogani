@@ -9,10 +9,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header border-bottom p-1 mb-1">
-                    <h4>All Products</h4>
+                    <h4>Products</h4>
                     <div class="text-right">
                         <a href="{{ route('account.products.create') }}" class="btn btn-primary">
-                            <span>Add Product</span>
+                            <span>New</span>
                         </a>
                     </div>
                 </div>

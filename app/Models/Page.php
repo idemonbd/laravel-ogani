@@ -14,8 +14,8 @@ class Page extends Model
         'active' => 'boolean',
     ];
 
-    public function menu()
+    public function menus()
     {
-        return $this->belongsTo(Menu::class);
+        return $this->belongsToMany(Page::class);
     }
 }

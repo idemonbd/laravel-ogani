@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-header border-bottom p-1 mb-1">
-            <h4>All Menus</h4>
+            <h4>Menus</h4>
             <div class="text-right">
                 <a href="" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
                     <span>Add menu</span>
@@ -11,25 +11,45 @@
             </div>
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered">
                 <thead>
                     <tr class="text-center">
-                        <th>SL</th>
                         <th>Name</th>
                         <th>Position</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($menus as $index => $menu)
+                    @foreach ($menus as $menu)
                         <tr class="text-center">
-                            <td>{{ $index + 1 }}</td>
                             <td>{{ $menu->name }}</td>
                             <td>{{ $menu->position }}</td>
+                            <td>{!! $menu->active ? '<p class="text-success">Actived</p>' : '<p class="text-info">Inactive</p>' !!}</td>
                             <td>
-                                {!! $menu->active ? '<p class="text-success">Actived</p>' : '<button class="btn btn-sm btn-info">Active</button>' !!}
-                                <button onclick="deleteItem({{ $menu->id }})"
-                                    class="btn btn-sm btn-danger">Delete</button>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-sm dropdown-toggle hide-arrow"
+                                        data-toggle="dropdown">
+                                        <i data-feather="more-vertical"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        @if (!$menu->active)
+                                            <a class="dropdown-item" href="javascript:void(0);" onclick="activeItem({{ $menu->id }})">
+                                                <i data-feather="check" class="mr-50"></i>
+                                                <span>Active</span>
+                                            </a>
+                                        @endif
+                                        <a class="dropdown-item" href="{{ route('account.menus.edit', $menu->id) }}">
+                                            <i data-feather="edit-2" class="mr-50"></i>
+                                            <span>Edit</span>
+                                        </a>
+                                        <a class="dropdown-item" href="javascript:void(0);"
+                                            onclick="deleteItem({{ $menu->id }})">
+                                            <i data-feather="trash" class="mr-50"></i>
+                                            <span>Delete</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -76,8 +96,14 @@
         </div>
     </div>
 
+    {{-- ACTIVE FORM --}}
+    <form id="activeItem" method="POST" class="d-none">
+        @csrf
+        @method('put')
+        <input type="hidden" name="active" value="1">
+    </form>
     {{-- DELETE FORM --}}
-    <form id="deleteItem" method="POST">
+    <form id="deleteItem" method="POST" class="d-none">
         @csrf
         @method('delete')
     </form>
@@ -87,6 +113,11 @@
 @push('scripts')
 
     <script>
+        function activeItem(id) {
+            let url = '{{ url('account/menus') }}/' + id;
+            $('#activeItem').attr('action', url).submit();
+        }
+
         function deleteItem(id) {
             let url = '{{ url('account/menus') }}/' + id;
             if (confirm('Are you sure want to delete?')) {
