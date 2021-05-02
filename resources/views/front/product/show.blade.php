@@ -1,5 +1,21 @@
 @extends('layouts.front')
 @section('content')
+    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb.jpg') }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>{{ $product->name }}</h2>
+                        <div class="breadcrumb__option">
+                            @foreach ($product->categories as $category)
+                                <a href="{{ route('front.shop',['category' => $category->id]) }}">{{ $category->name }}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
         <div class="container">
@@ -7,12 +23,13 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large" src="{{ url('uploads/' . $product->images[0]) }}"
-                                alt="">
+                            <img class="product__details__pic__item--large"
+                                src="{{ url('uploads/' . $product->images[0]) }}" alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
                             @foreach ($product->images as $image)
-                                <img data-imgbigurl="{{ url('uploads/' . $image) }}" src="{{ url('uploads/' . $image) }}" alt="">
+                                <img data-imgbigurl="{{ url('uploads/' . $image) }}"
+                                    src="{{ url('uploads/' . $image) }}" alt="">
                             @endforeach
                         </div>
                     </div>

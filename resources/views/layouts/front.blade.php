@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>{{ $TITLE ?? $setting->name}}</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -131,7 +131,7 @@
                 </div>
             </div>
         </div>
-        <div data-aos="flip-right" class="container">
+        <div data-aos="fade-down" class="container">
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
@@ -201,7 +201,7 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
+                                <h5>{{ $setting->phone }}</h5>
                                 <span>support 24/7 time</span>
                             </div>
                         </div>
@@ -268,23 +268,22 @@
                     </div>
                 </div>
             </div>
-            <div class="row" data-aos="zoom-out" data-aos-offset="0">
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="footer__copyright">
-                        <div class="footer__copyright__text">
+                        <div data-aos="fade-right" data-aos-offset="0" class="footer__copyright__text">
                             <p>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;
                                 <script>
                                     document.write(new Date().getFullYear());
-
                                 </script> All rights reserved | This
                                 template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
                                     href="https://colorlib.com" target="_blank">Colorlib</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
-                        <div class="footer__copyright__payment"><img
+                        <div data-aos="fade-left" data-aos-offset="0" class="footer__copyright__payment"><img
                                 src="{{ asset('assets/front/img/payment-item.png') }}" alt=""></div>
                     </div>
                 </div>

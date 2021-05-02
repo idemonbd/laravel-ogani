@@ -33,6 +33,12 @@
                     <span class="menu-title text-truncate">Products</span>
                 </a>
             </li>
+            <li class="nav-item {{ request()->is('*orders*') ? 'open':'' }}">
+                <a class="d-flex align-items-center" href="{{ route('account.orders.index') }}">
+                    <i data-feather='shopping-cart'></i>
+                    <span class="menu-title text-truncate">Orders</span>
+                </a>
+            </li>
             <li class="nav-item {{ request()->is('*categories*') ? 'open':'' }}">
                 <a class="d-flex align-items-center" href="{{ route('account.categories.index') }}">
                     <i data-feather="grid"></i>

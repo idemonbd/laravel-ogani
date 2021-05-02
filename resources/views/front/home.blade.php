@@ -1,7 +1,7 @@
 @extends('layouts.front')
 @section('content')
     <!-- Home Banner Section Begin -->
-    <section class="container">
+    <section class="container" data-aos="fade-up">
         <div class="hero__item set-bg" data-setbg="{{ asset('assets/front/img/hero/banner.jpg') }}">
             <div class="hero__text">
                 <span>FRUIT FRESH</span>

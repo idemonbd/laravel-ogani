@@ -15,6 +15,7 @@ Route::group(['prefix' => 'account', 'as' => 'account.', 'namespace' => 'Account
     Route::resources([
         'products' => ProductController::class,
         'categories' => CategoryController::class,
+        'orders' => OrderController::class,
         'pages' => PageController::class,
         'menus' => MenuController::class,
     ]);

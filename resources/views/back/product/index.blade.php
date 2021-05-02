@@ -20,7 +20,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr class="text-center">
-                                <th>Id</th>
+                                <th>#</th>
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Price</th>
@@ -30,9 +30,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($products as $product)
+                            @foreach ($products as $index => $product)
                                 <tr class="text-center">
-                                    <td>{{ $product->id }}</td>
+                                    <td>{{ $index+1 }}</td>
                                     <td>
                                         <img src="{{ url('uploads/' . $product->images[0]) }}" class="img"
                                             style="max-height: 100px">
