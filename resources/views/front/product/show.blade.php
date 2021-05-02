@@ -7,28 +7,27 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large"
-                                src="{{ url('uploads/'.$product->image) }}" alt="">
+                            <img class="product__details__pic__item--large" src="{{ url('uploads/' . $product->images[0]) }}"
+                                alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
-                            <img data-imgbigurl="{{ url('uploads/'.$product->image) }}"
-                                src="{{ url('uploads/'.$product->image) }}" alt="">
-                            <img data-imgbigurl="{{ url('assets/front/img/product/details/product-details-3.jpg') }}"
-                                src="{{ url('assets/front/img/product/details/thumb-2.jpg') }}" alt="">
+                            @foreach ($product->images as $image)
+                                <img data-imgbigurl="{{ url('uploads/' . $image) }}" src="{{ url('uploads/' . $image) }}" alt="">
+                            @endforeach
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
                         <h3>{{ $product->name }}</h3>
-                        <div class="product__details__rating">
+                        {{-- <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-half-o"></i>
-                            <span>(18 reviews)</span>
-                        </div>
+                            <span>(0 reviews)</span>
+                        </div> --}}
                         <div class="product__details__price">${{ $product->price }}</div>
                         <p>{{ $product->description }}</p>
                         <div class="product__details__quantity">
@@ -112,7 +111,8 @@
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="{{ url('assets/front/img/product/product-1.jpg') }}">
+                        <div class="product__item__pic set-bg"
+                            data-setbg="{{ url('assets/front/img/product/product-1.jpg') }}">
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>

@@ -34,7 +34,7 @@
                                 <tr class="text-center">
                                     <td>{{ $product->id }}</td>
                                     <td>
-                                        <img src="{{ url('uploads/' . $product->image) }}" class="img"
+                                        <img src="{{ url('uploads/' . $product->images[0]) }}" class="img"
                                             style="max-height: 100px">
                                     </td>
                                     <td>{{ $product->name }}</td>

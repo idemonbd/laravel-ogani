@@ -1,7 +1,8 @@
 @extends('layouts.back')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('assets/back/vendors/css/forms/select/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/back/vendors/css/forms/select/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/back/vendors/css/file-uploaders/dropzone.min.css') }}">
 @endpush
 
 @section('content')
@@ -65,11 +66,17 @@
                                     <input type="number" name="price" class="form-control" value="{{ old('price') }}">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>Stock</label>
+                                    <input type="number" name="stock" class="form-control" value="{{ old('stock') }}">
+                                </div>
+                            </div>
 
                             <div class="form-group">
-                                <label for="customFile">Image / Logo</label>
+                                <label for="customFile">Images</label>
                                 <div class="custom-file">
-                                    <input type="file" name="image" class="custom-file-input" id="customFile">
+                                    <input type="file" name="images[]" class="custom-file-input" id="customFile" multiple>
                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                 </div>
                             </div>
@@ -77,7 +84,8 @@
                                 <label for="">Product Status</label>
                                 <div class="d-flex">
                                     <div class="custom-control custom-control-primary custom-switch">
-                                        <input type="checkbox" name="status" class="custom-control-input" id="status" checked>
+                                        <input type="checkbox" name="status" class="custom-control-input" id="status"
+                                            checked>
                                         <label class="custom-control-label" for="status"></label>
                                     </div>
                                     <p class="mb-50">Active Product</p>

@@ -33,8 +33,13 @@ class ProductController extends Controller
         ]);
 
         $product = new Product($request->only(['name','description','price']));
-        if ($request->hasFile('image')) {
-            $product->image = $request->image->store('product');
+        if ($request->has('images')) {
+            $images = [];
+            foreach($request->images as $image){
+                $newImg = $image->store('product');
+                array_push($images,$newImg);
+            }
+            $product->images = $images;
         }
         $product->save();
         $product->categories()->attach($request->categories);

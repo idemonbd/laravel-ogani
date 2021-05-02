@@ -25,6 +25,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('setting', Setting::first());
+        View::share('setting', Setting::firstOrCreate([
+            'name' => 'Ogani',
+            // 'logo' => 'assets/front/img/logo.png',
+            'email' => 'admin@ogani.com',
+            'phone' => '+880 17-8063-4345',
+            'address' => 'Dhaka, Bangladesh',
+        ]));
     }
 }

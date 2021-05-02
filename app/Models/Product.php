@@ -14,6 +14,7 @@ class Product extends Model
 
     protected $casts = [
         'status' => 'boolean',
+        'images' => 'array',
     ];
 
     public function categories()

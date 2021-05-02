@@ -15,12 +15,10 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered">
                     <thead>
                         <tr class="text-center">
-                            <th>Type</th>
-                            <th>Name</th>
-                            <th>Menu</th>
+                            <th>Title</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -28,12 +26,27 @@
                     <tbody>
                         @foreach ($pages as $page)
                         <tr class="text-center">
-                            <td>{{ $page->type }}</td>
-                            <td><a href="{{ url('pages/'.$page->slug) }}">{{ $page->name }}</a></td>
-                            <td>{{ $page->menu->name ?? 'None' }}</td>
+                            <td><a href="{{ url('pages/'.$page->slug) }}">{{ $page->title }}</a></td>
                             <td>{{ $page->active ? 'Active':'Inactive' }}</td>
                             <td>
-                                <button onclick="deleteItem({{ $page->id }})" class="btn btn-sm btn-danger">Delete</button>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-sm dropdown-toggle hide-arrow"
+                                        data-toggle="dropdown">
+                                        <i data-feather="more-vertical"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item"
+                                            href="{{ route('account.pages.edit', $page->id) }}">
+                                            <i data-feather="edit-2" class="mr-50"></i>
+                                            <span>Edit</span>
+                                        </a>
+                                        <a class="dropdown-item" href="javascript:void(0);"
+                                            onclick="deleteItem({{ $page->id }})">
+                                            <i data-feather="trash" class="mr-50"></i>
+                                            <span>Delete</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         @endforeach

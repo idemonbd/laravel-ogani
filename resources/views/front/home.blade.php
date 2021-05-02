@@ -20,9 +20,9 @@
                 <div class="categories__slider owl-carousel">
                     @foreach ($categories as $category)
                         <div class="col-lg-3">
-                            <div class="categories__item set-bg"
-                                data-setbg="{{ url('uploads/'.$category->image) }}">
-                                <h5><a href="{{ route('front.shop', ['cat' => $category->id]) }}">{{ $category->name }}</a></h5>
+                            <div class="categories__item set-bg" data-setbg="{{ url('uploads/' . $category->image) }}">
+                                <h5><a href="{{ route('front.shop', ['cat' => $category->id]) }}">{{ $category->name }}</a>
+                                </h5>
                             </div>
                         </div>
                     @endforeach
@@ -50,12 +50,13 @@
                     </div>
                 </div>
             </div>
+
             <div data-aos="fade-up" class="row featured__filter">
                 @foreach ($products as $product)
-                    <div class="col-lg-3 col-md-4 col-sm-6 mix cat-{{ $product->category->id }}">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix @foreach ($product->categories as
+                        $category) cat-{{ $category->id }} @endforeach">
                         <div class="featured__item">
-                            <div class="featured__item__pic set-bg"
-                                data-setbg="{{ url('uploads/'.$product->image) }}">
+                            <div class="featured__item__pic set-bg" data-setbg="{{ url('uploads/' . $product->images[0]) }}">
                                 <ul class="featured__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>

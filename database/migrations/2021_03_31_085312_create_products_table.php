@@ -17,7 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->float('price');
-            $table->string('image')->nullable();
+            $table->unsignedInteger('stock');
+            $table->json('images')->nullable();
             $table->text('description')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();

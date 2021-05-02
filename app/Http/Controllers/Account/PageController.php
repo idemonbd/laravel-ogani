@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Account;
 
 use App\Models\Menu;
 use App\Models\Page;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
@@ -41,12 +42,15 @@ class PageController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'title' => 'required',
             'slug' => 'unique:pages,slug',
-            'url' => 'required_without:slug',
         ]);
-        
-        Page::create($request->all());
+
+        $newPage = new Page($request->all());
+        if (!$request->slug) {
+            $newPage->slug = Str::slug($request->title);
+        }
+        $newPage->save();
         Toastr::success('Page added successfully', 'Success');
         return redirect(route('account.pages.index'));
     }
