@@ -19,6 +19,7 @@
                     <thead>
                         <tr class="text-center">
                             <th>Title</th>
+                            <th>Slug</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -27,6 +28,7 @@
                         @foreach ($pages as $page)
                         <tr class="text-center">
                             <td><a href="{{ url('pages/'.$page->slug) }}">{{ $page->title }}</a></td>
+                            <td>{{ $page->slug }}</td>
                             <td>{{ $page->active ? 'Active':'Inactive' }}</td>
                             <td>
                                 <div class="dropdown">

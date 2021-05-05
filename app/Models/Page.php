@@ -16,6 +16,6 @@ class Page extends Model
 
     public function menus()
     {
-        return $this->belongsToMany(Page::class);
+        return $this->belongsToMany(Menu::class);
     }
 }

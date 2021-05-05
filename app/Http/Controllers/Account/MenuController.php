@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Account;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Page;
 use Brian2694\Toastr\Facades\Toastr;
 
 class MenuController extends Controller
@@ -38,6 +39,8 @@ class MenuController extends Controller
     }
     public function edit(Menu $menu)
     {
+        $pages = Page::all();
+        return view('back.menu.edit',compact('menu','pages'));
     }
 
     public function update(Request $request, Menu $menu)
@@ -46,6 +49,13 @@ class MenuController extends Controller
            $this->active($menu);
            Toastr::success('Menu Actived successfully', 'Success');
         }
+
+        if ($request->has('page_id')) {
+           $menu->pages()->attach($request->page_id,[
+               'order' => $request->order
+           ]);
+        }
+
         return back();
     }
 
